@@ -42,11 +42,9 @@ public class Task2_1_9 extends Object {
 
         @Override
         public int hashCode() {
-            Double result = getIm()+getRe();
-            result = 31 * result + (result != null ? result.hashCode(): 0);
-            double result1 = result;
-            return (int) result1;
+            return java.util.Objects.hash(re, im);
         }
+
     }
 }
 
