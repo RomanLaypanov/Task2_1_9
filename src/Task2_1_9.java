@@ -1,8 +1,8 @@
 public class Task2_1_9 extends Object {
     public static void main(String[] args) {
 
-        ComplexNumber a = new ComplexNumber(1.11, 1.01);
-        ComplexNumber b = new ComplexNumber(1, 1.12);
+        ComplexNumber a = new ComplexNumber(1, 1.01);
+        ComplexNumber b = new ComplexNumber(1.11, 1.01);
 
         System.out.println(a.equals(b));
         System.out.println(a.hashCode() + " " + b.hashCode());
@@ -42,9 +42,14 @@ public class Task2_1_9 extends Object {
 
         @Override
         public int hashCode() {
-            return java.util.Objects.hash(re, im);
+            int result;
+            long temp;
+            temp = Double.doubleToLongBits(re);
+            result = (int) (temp ^ (temp >>> 32));
+            temp = Double.doubleToLongBits(im);
+            result = 31 * result + (int) (temp ^ (temp >>> 32));
+            return result;
         }
-
     }
 }
 
